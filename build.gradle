@@ -1,12 +1,21 @@
+buildscript {
+    dependencies {
+        //This is necessary to use the gradle shadow plugin
+        classpath 'com.github.jengelman.gradle.plugins:shadow:5.1.0'
+    }
+}
+
 plugins {
     id 'java'
     id 'application'
+    id "com.github.johnrengelman.shadow" version "5.1.0"
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'com.app.vehiclerental'
+version 'latest'
 
 repositories {
+    jcenter()
     mavenCentral()
 }
 
@@ -17,4 +26,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.app.vehiclerental.VehicleRentalDriver'
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'com.app.vehiclerental.VehicleRentalDriver'
 }

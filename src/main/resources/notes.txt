@@ -1,6 +1,8 @@
 # java docs for all the apis
 # to do comments
-# take the input from a file
-# the deal with enum
-# add comments when needed
-# check for the necessity of generics
+
+# test cases => single test file
+# cleanup the code
+# refactor code if needed
+
+
