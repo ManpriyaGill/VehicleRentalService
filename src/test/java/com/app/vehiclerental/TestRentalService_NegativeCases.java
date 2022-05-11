@@ -145,24 +145,6 @@ public class TestRentalService_NegativeCases extends AbstractTestBase{
     }
 
     @Test
-    public void testExecuteCommands_InvalidStartEnd() {
-        List<String> commands = Arrays.asList(
-                "ADD_BRANCH B1 CAR,BIKE,VAN",
-                "ADD_VEHICLE B1 CAR V1 500",
-                "BOOK B1 CAR 4 3",
-                "DISPLAY_VEHICLES B2 3 5"
-        );
-        List<String> expectedResult = Arrays.asList(
-                "TRUE",
-                "TRUE",
-                "-1",
-                ""
-        );
-        List<String> actualResult = VehicleRentalDriver.runApplicationCommands(commands);
-        Assertions.assertIterableEquals(expectedResult, actualResult);
-    }
-
-    @Test
     public void testDropVehicle_UnsupportedBranch() {
         List<String> commands = Arrays.asList(
                 "ADD_BRANCH B1 CAR,BIKE",
