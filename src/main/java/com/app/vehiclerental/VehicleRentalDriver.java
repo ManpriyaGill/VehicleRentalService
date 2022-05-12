@@ -1,13 +1,12 @@
 package com.app.vehiclerental;
 
-import com.app.vehiclerental.domain.CommandDetails;
 import com.app.vehiclerental.factory.CommandExecutionFactory;
 import com.app.vehiclerental.factory.SingletonBranchDAOFactory;
 import com.app.vehiclerental.factory.SingletonRentalServiceFactory;
+import com.app.vehiclerental.utils.InputCommandValidator;
 import com.app.vehiclerental.utils.InputParser;
 
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class VehicleRentalDriver {
@@ -44,7 +43,7 @@ public class VehicleRentalDriver {
 
     public static List<String> runApplicationCommands(List<String> inputCommands) {
         return inputCommands.stream()
-                .map(VehicleRentalDriver::getCommandDetails)
+                .map(InputCommandValidator::validateAndGetCommandDetails)
                 .map(
                         details -> CommandExecutionFactory
                                 .getCommandExecutor(details.getName())
@@ -53,10 +52,4 @@ public class VehicleRentalDriver {
                 .collect(Collectors.toList());
 
     }
-
-    private static CommandDetails getCommandDetails(String command) {
-        String[] splitCommand = command.split(" ");
-        return new CommandDetails(splitCommand[0], splitCommand);
-    }
-
 }

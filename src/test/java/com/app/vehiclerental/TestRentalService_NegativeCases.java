@@ -1,6 +1,5 @@
 package com.app.vehiclerental;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -36,6 +35,41 @@ public class TestRentalService_NegativeCases extends AbstractTestBase{
                 "TRUE",
                 "FALSE",
                 "FALSE"
+        );
+        List<String> actualResult = VehicleRentalDriver.runApplicationCommands(commands);
+        Assertions.assertIterableEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void testInvalidPriceForVehicle() {
+        List<String> commands = Arrays.asList(
+                "ADD_BRANCH B1 CAR,BIKE,BUS",
+                "ADD_VEHICLE B1 VAN V1 -100"
+        );
+        List<String> expectedResult = Arrays.asList(
+                "TRUE",
+                "FALSE"
+        );
+        List<String> actualResult = VehicleRentalDriver.runApplicationCommands(commands);
+        Assertions.assertIterableEquals(expectedResult, actualResult);
+    }
+
+    @Test
+    public void testUnableToBook_InvalidBookingTimes() {
+        List<String> commands = Arrays.asList(
+                "ADD_BRANCH B1 VAN",
+                "ADD_VEHICLE B1 VAN V1 100",
+                "BOOK B1 VAN 5 1",
+                "BOOK B1 VAN -1 20",
+                "BOOK B1 VAN 1 25"
+
+        );
+        List<String> expectedResult = Arrays.asList(
+                "TRUE",
+                "TRUE",
+                "-1",
+                "-1",
+                "-1"
         );
         List<String> actualResult = VehicleRentalDriver.runApplicationCommands(commands);
         Assertions.assertIterableEquals(expectedResult, actualResult);

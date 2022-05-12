@@ -12,8 +12,4 @@ public abstract class AbstractCommandExecutor {
 
     public abstract String executeCommand(String[] splitCommand);
 
-
-    public void validateInputParameters(String[] splitCommand) {
-        // validate if the input parameters are valid in the context of the given command
-    }
 }

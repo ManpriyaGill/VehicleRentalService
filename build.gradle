@@ -38,3 +38,7 @@ application {
     // Define the main class for the application.
     mainClassName = 'com.app.vehiclerental.VehicleRentalDriver'
 }
+
+shadowJar{
+    archiveFileName = "vehiclerental-latest.jar"
+}

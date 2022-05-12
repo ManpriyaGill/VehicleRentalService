@@ -1,7 +1,6 @@
 package com.app.vehiclerental.executors;
 
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.logging.Level;
 
 public class AddBranchCommandExecutor extends AbstractCommandExecutor {

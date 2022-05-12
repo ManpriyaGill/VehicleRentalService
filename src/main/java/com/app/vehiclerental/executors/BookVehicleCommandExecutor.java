@@ -10,12 +10,23 @@ public class BookVehicleCommandExecutor extends AbstractCommandExecutor {
         String vehicleType = splitCommand[2];
         int startTime = Integer.parseInt(splitCommand[3]);
         int endTime = Integer.parseInt(splitCommand[4]);
+        double bookingPrice = -1;
 
-        double bookingPrice = rentalService.bookVehicle(branchName, vehicleType, startTime, endTime).getTotalPrice();
-
-        printLog(bookingPrice, branchName, vehicleType, startTime, endTime);
+        try {
+            validateBookingTimes(startTime, endTime);
+            bookingPrice = rentalService.bookVehicle(branchName, vehicleType, startTime, endTime).getTotalPrice();
+            printLog(bookingPrice, branchName, vehicleType, startTime, endTime);
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
+        }
 
         return Integer.toString((int)bookingPrice);
+    }
+
+    private void validateBookingTimes(int startTime, int endTime) {
+        if(startTime >= endTime || endTime < 1 || endTime > 24 || startTime < 1) {
+            throw new IllegalArgumentException("Invalid startTime and endTime for the booking");
+        }
     }
 
     private void printLog(double bookingPrice, String branchName, String vehicleType,
