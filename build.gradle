@@ -40,5 +40,5 @@ application {
 }
 
 shadowJar{
-    archiveFileName = "vehiclerental-latest.jar"
+    archiveFileName = "geektrust.jar"
 }
