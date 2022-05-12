@@ -11,8 +11,10 @@ You can pick the attached jar file or build your own jar.
 
 **Example**
 
-From the project folder, run the application with command
+From the `demo` directory, run the application with command
 `java -jar vehiclerental-latest.jar inputs.txt`
+
+**Note**: `cd demo` before this
 
 ### Build the jar (optional)
 From the project folder run the command
