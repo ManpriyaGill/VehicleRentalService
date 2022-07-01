@@ -3,16 +3,18 @@ package com.app.vehiclerental.utils;
 import com.app.vehiclerental.domain.CommandDetails;
 
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InputCommandValidator {
 
-    private static final Map<String, Integer> commandParameterCount = Map.of(
-            "ADD_BRANCH", 3,
-            "ADD_VEHICLE", 5,
-            "BOOK", 5,
-            "DISPLAY_VEHICLES", 4,
-            "DROP", 5
-    );
+    private static final Map<String, Integer> commandParameterCount = Stream.of(new Object[][] {
+            { "ADD_BRANCH", 3 },
+            { "ADD_VEHICLE", 5 },
+            { "BOOK", 5 },
+            { "DISPLAY_VEHICLES", 4 },
+            { "DROP", 5 }
+    }).collect(Collectors.toMap(data -> (String) data[0], data -> (Integer) data[1]));
 
     public static CommandDetails validateAndGetCommandDetails(String command) {
         String[] splitCommand = command.split(" ");
