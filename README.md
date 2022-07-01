@@ -3,7 +3,7 @@ Rent different kinds of vehicles such as cars and bikes.
 
 ### Run the application
 
-`java -jar geektrust.jar relative/path/to/input_file`
+`java -jar vehicleRental.jar relative/path/to/input_file`
 
 If no input file is passed, default file is picked up from [here](src/main/resources/inputs.txt) 
 
@@ -12,7 +12,7 @@ You can pick the attached jar file or build your own jar.
 **Example**
 
 From the `demo` directory, run the application with command
-`java -jar geektrust.jar inputs.txt`
+`java -jar vehicleRental.jar inputs.txt`
 
 **Note**: `cd demo` before this
 
@@ -21,7 +21,7 @@ From the project folder run the command
 
 `./gradlew shadowJar`
 
-This generates a jar `geektrust.jar` at the location `build/libs`
+This generates a jar `vehicleRental.jar` at the location `build/libs`
 
 ### Running tests
 
